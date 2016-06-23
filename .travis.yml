@@ -1,0 +1,19 @@
+branches:
+  only:
+    - master
+
+sudo: required
+services:
+  - docker
+
+install:
+  - wget -O - 'https://api.bintray.com/content/habitat/stable/linux/x86_64/hab-$latest-x86_64-linux.tar.gz?bt_package=hab-x86_64-linux' | sudo tar -xzf - --strip-components 1 -C /usr/local/bin
+
+before_script:
+  - sudo mkdir -p /hab/cache/keys
+  - wget -O - https://willem.habitat.sh/v1/depot/origins/j/keys/20160614163536 | sudo tee /hab/cache/keys/j-20160614163536.pub
+  - echo -e -n $HAB_KEY | sudo tee /hab/cache/keys/j-20160614163536.sig.key
+
+script:
+  - ls -la /hab/cache/keys/
+  - sudo -E hab pkg build -k j .
