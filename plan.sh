@@ -9,7 +9,13 @@ pkg_upstream_url=https://github.com/RoboticCheese/znc-habitat
 pkg_source=http://znc.in/releases/${pkg_name}-${pkg_version}.tar.gz
 pkg_shasum=631c46de76fe601a41ef7676bc974958e9a302b72b25fc92b4a603a25d89b827
 
-pkg_deps=(core/glibc core/gcc-libs core/openssl core/zlib core/perl core/python)
+pkg_deps=(core/glibc
+          core/gcc-libs
+          core/openssl
+          core/zlib
+          core/tcl
+          core/perl
+          core/python)
 pkg_build_deps=(core/gcc core/make core/pkg-config)
 pkg_bin_dirs=(bin)
 pkg_include_dirs=(include)
@@ -32,8 +38,8 @@ do_build() {
     --enable-openssl \
     --enable-zlib \
     --enable-perl \
-    --enable-python
-    # --enable-tcl \
+    --enable-python \
+    --enable-tcl
     # --enable-cyrus
     # --enable-charset? (icu-uc not found via pkg-config)
   make
