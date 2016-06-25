@@ -15,7 +15,8 @@ pkg_deps=(core/glibc
           core/zlib
           core/tcl
           core/perl
-          core/python)
+          core/python
+          j/libsasl2)
 pkg_build_deps=(core/gcc core/make core/pkg-config)
 pkg_bin_dirs=(bin)
 pkg_include_dirs=(include)
@@ -39,8 +40,8 @@ do_build() {
     --enable-zlib \
     --enable-perl \
     --enable-python \
-    --enable-tcl
-    # --enable-cyrus
-    # --enable-charset? (icu-uc not found via pkg-config)
+    --enable-tcl \
+    --enable-cyrus
+    # --enable-charset
   make
 }

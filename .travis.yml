@@ -15,5 +15,4 @@ before_script:
   - echo -e -n $HAB_KEY | sudo tee /hab/cache/keys/j-20160614163536.sig.key
 
 script:
-  - ls -la /hab/cache/keys/
   - sudo -E hab pkg build -k j .
