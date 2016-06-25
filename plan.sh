@@ -13,6 +13,7 @@ pkg_deps=(core/glibc
           core/gcc-libs
           core/openssl
           core/zlib
+          core/icu
           core/tcl
           core/perl
           core/python
@@ -28,7 +29,8 @@ do_prepare() {
   export CPPFLAGS="$CPPFLAGS $CFLAGS"
   build_line "Setting CPPFLAGS=$CPPFLAGS"
 
-  export PKG_CONFIG_PATH="$(pkg_path_for python)/lib/pkgconfig"
+  PCP=$(pkg_path_for python)/lib/pkgconfig:$(pkg_path_for icu)/lib/pkgconfig
+  export PKG_CONFIG_PATH=$PCP:$PKG_CONFIG_PATH
   build_line "Setting PKG_CONFIG_PATH=$PKG_CONFIG_PATH"
 }
 
@@ -41,7 +43,7 @@ do_build() {
     --enable-perl \
     --enable-python \
     --enable-tcl \
-    --enable-cyrus
-    # --enable-charset
+    --enable-cyrus \
+    --enable-charset
   make
 }
