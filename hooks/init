@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "Symlinking to znc.conf..."
+mkdir -p {{pkg.svc_data_path}}/configs
+ln -sf {{pkg.svc_config_path}}/znc.conf {{pkg.svc_data_path}}/configs/znc.conf

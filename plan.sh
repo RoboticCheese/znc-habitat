@@ -1,3 +1,5 @@
+#!/bin/sh
+
 pkg_name=znc
 pkg_description="A Habitat package of the ZNC IRC bouncer"
 pkg_origin=j
