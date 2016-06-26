@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -x
+
+{{~#each cfg.listeners}}
+hab pkg exec core/curl curl --head --fail --max-time 1 http://localhost:{{port}}
+
+if [ $? != 0 ]; then
+  exit 2
+fi
+{{~/each}}
+
+exit 0
