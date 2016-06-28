@@ -1,5 +1,12 @@
 #!/bin/sh
 
-echo "Symlinking to znc.conf..."
+set -e
+
+# The service user needs write access to the config file or startup will fail.
+echo "Setting ownership of znc.conf..."
+chown hab:hab {{pkg.svc_config_path}}/znc.conf
+
+# There's no switch to look for znc.conf anywhere but in the data dir.
+echo "Symlinking znc.conf..."
 mkdir -p {{pkg.svc_data_path}}/configs
 ln -sf {{pkg.svc_config_path}}/znc.conf {{pkg.svc_data_path}}/configs/znc.conf
