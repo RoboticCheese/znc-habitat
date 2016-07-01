@@ -8,5 +8,10 @@ chown hab:hab {{pkg.svc_config_path}}/znc.conf
 
 # There's no switch to look for znc.conf anywhere but in the data dir.
 echo "Symlinking znc.conf..."
-mkdir -p {{pkg.svc_data_path}}/configs
+chpst -u hab:hab mkdir -p {{pkg.svc_data_path}}/configs
 ln -sf {{pkg.svc_config_path}}/znc.conf {{pkg.svc_data_path}}/configs/znc.conf
+
+if [ ! -e {{pkg.svc_data_path}}/znc.pem ]; then
+  echo "Generating a self-signed SSL certificate..."
+  chpst -u hab:hab {{pkg.path}}/bin/znc -f -d {{pkg.svc_data_path}} -p
+fi
