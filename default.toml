@@ -1,3 +1,5 @@
+version = '1.6.3'
+
 [[listeners]]
 port = 1025
 ipv4 = true
