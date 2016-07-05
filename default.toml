@@ -7,18 +7,3 @@ ipv6 = true
 ssl = true
 allow_irc = true
 allow_web = true
-
-[[users]]
-name = 'roboticcheese'
-pass = 'abc123'
-admin = true
-nick = 'roboticcheese'
-alt_nick = 'roboticcheese_'
-ident = 'roboticcheese'
-real_name = 'Jonathan Hartman'
-bind_host = '127.0.0.1'
-load_module = ['chansaver', 'controlpanel']
-  [[users.networks]]
-  name = 'freenode'
-  server = 'chat.freenode.net +6697'
-  load_module = ['simple_away']
