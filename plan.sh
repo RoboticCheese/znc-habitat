@@ -24,7 +24,7 @@ pkg_build_deps=(core/gcc core/make core/pkg-config)
 pkg_bin_dirs=(bin)
 pkg_include_dirs=(include)
 pkg_lib_dirs=(lib)
-pkg_expose=(80)
+pkg_expose=(6697)
 pkg_svc_run="bin/znc -f -d ${pkg_svc_data_path}"
 
 do_prepare() {

@@ -1,7 +1,7 @@
 version = '1.6.3'
 
 [[listeners]]
-port = 1025
+port = 6697
 ipv4 = true
 ipv6 = true
 ssl = true
